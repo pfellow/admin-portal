@@ -1,0 +1,58 @@
+name: Node - Stage deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+      - name: Yarn
+        run:
+          yarn
+      - name: Lint
+        run:
+          yarn lint
+      - name: Typecheck
+        run:
+          yarn typecheck
+      - name: Tests
+        run:
+          yarn test
+  build:
+    runs-on: ubuntu-latest
+    needs: [verify]
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+      - name: Yarn
+        run:
+          yarn
+      - name: 🔨 Build Project
+        run:
+          yarn run build
+
+
+      # - name: 📂 Deploy to Server
+      #   uses: easingthemes/ssh-deploy@v4
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      #     # ARGS: "-rltgoDzvO --delete"
+      #     SOURCE: 'dist/'
+      #     REMOTE_HOST: 192.34.62.123
+      #     REMOTE_USER: berry
+      #     TARGET: public_html/vue/free/stage
+      #     EXCLUDE: '/node_modules/'
