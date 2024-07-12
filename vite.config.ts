@@ -43,6 +43,15 @@ export default defineConfig({
       deps: {
         inline: ['vuetify']
       }
+    },
+    coverage: {
+      reporter: 'html',
+      thresholds: {
+        statements: 4
+      },
+      enabled: true,
+      include: ['src/**/*'],
+      exclude: ['**/coverage/**']
     }
   }
 });
