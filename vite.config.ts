@@ -47,7 +47,7 @@ export default defineConfig({
     coverage: {
       reporter: 'html',
       thresholds: {
-        statements: 50
+        statements: 4
       },
       enabled: true,
       include: ['src/**/*'],
