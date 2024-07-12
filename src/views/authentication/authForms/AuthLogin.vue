@@ -24,40 +24,19 @@ function validate(values: any, { setErrors }: any) {
 </script>
 
 <template>
-  <v-btn
-    block
-    color="primary"
-    variant="outlined"
-    class="text-lightText googleBtn"
-  >
-    <img
-      :src="Google"
-      alt="google"
-    >
+  <v-btn block color="primary" variant="outlined" class="text-lightText googleBtn">
+    <img :src="Google" alt="google" />
     <span class="ml-2">Sign in with Google</span>
   </v-btn>
   <v-row>
     <v-col class="d-flex align-center">
       <v-divider class="custom-devider" />
-      <v-btn
-        variant="outlined"
-        class="orbtn"
-        rounded="md"
-        size="small"
-      >
-        OR
-      </v-btn>
+      <v-btn variant="outlined" class="orbtn" rounded="md" size="small"> OR </v-btn>
       <v-divider class="custom-devider" />
     </v-col>
   </v-row>
-  <h5 class="text-h5 text-center my-4 mb-8">
-    Sign in with Email address
-  </h5>
-  <Form
-    v-slot="{ errors, isSubmitting }"
-    class="mt-7 loginForm"
-    @submit="validate"
-  >
+  <h5 class="text-h5 text-center my-4 mb-8">Sign in with Email address</h5>
+  <Form v-slot="{ errors, isSubmitting }" class="mt-7 loginForm" @submit="validate">
     <v-text-field
       v-model="username"
       :rules="emailRules"
@@ -95,10 +74,7 @@ function validate(values: any, { setErrors }: any) {
         hide-details
       />
       <div class="ml-auto">
-        <a
-          href="javascript:void(0)"
-          class="text-primary text-decoration-none"
-        >Forgot password?</a>
+        <a href="javascript:void(0)" class="text-primary text-decoration-none">Forgot password?</a>
       </div>
     </div>
     <v-btn
@@ -110,13 +86,11 @@ function validate(values: any, { setErrors }: any) {
       size="large"
       :disabled="valid"
       type="submit"
+      data-testid="button-sign-in"
     >
       Sign In
     </v-btn>
-    <div
-      v-if="errors.apiError"
-      class="mt-2"
-    >
+    <div v-if="errors.apiError" class="mt-2">
       <v-alert color="error">
         {{ errors.apiError }}
       </v-alert>
@@ -124,13 +98,7 @@ function validate(values: any, { setErrors }: any) {
   </Form>
   <div class="mt-5 text-right">
     <v-divider />
-    <v-btn
-      variant="plain"
-      to="/auth/register"
-      class="mt-2 text-capitalize mr-n2"
-    >
-      Don't Have an account?
-    </v-btn>
+    <v-btn variant="plain" to="/auth/register" class="mt-2 text-capitalize mr-n2"> Don't Have an account? </v-btn>
   </div>
 </template>
 <style lang="scss">

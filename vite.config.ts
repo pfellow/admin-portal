@@ -44,6 +44,7 @@ export default defineConfig({
         inline: ['vuetify']
       }
     },
+    include: ['src/**/*.test.ts'],
     coverage: {
       reporter: 'html',
       thresholds: {
@@ -51,7 +52,7 @@ export default defineConfig({
       },
       enabled: true,
       include: ['src/**/*'],
-      exclude: ['**/coverage/**']
+      exclude: ['**/coverage/**', 'e2e']
     }
   }
 });
