@@ -20,15 +20,9 @@ const breadcrumbs = shallowRef([
 </script>
 
 <template>
-  <BaseBreadcrumb
-    :title="page.title"
-    :breadcrumbs="breadcrumbs"
-  />
+  <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs" />
   <v-row>
-    <v-col
-      cols="12"
-      md="12"
-    >
+    <v-col cols="12" md="12">
       <UiParentCard title="Simple Title">
         Lorem ipsum dolor sit amen, consenter nipissing eli, sed do elusion tempos incident ut laborers et doolie magna alissa. Ut enif ad
         minim venice, quin nostrum exercitation illampu laborings nisi ut liquid ex ea commons construal. Duos aube grue dolor in
@@ -37,4 +31,5 @@ const breadcrumbs = shallowRef([
       </UiParentCard>
     </v-col>
   </v-row>
+  <a class="getStarted" href="/" data-testid="get-started-link">Get started</a>
 </template>
